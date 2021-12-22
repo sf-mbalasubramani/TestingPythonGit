@@ -1,6 +1,6 @@
 # This is a sample Python script.
 import git
-from deepdiff import DeepDiff
+from deepdiff import DeepDiff, Delta
 import yaml
 
 
@@ -21,7 +21,9 @@ def test_fun(name):
             previous_config_yaml = yaml.safe_load(repo.git.show('{}:{}'.format(commit.hexsha, file_path)))
             current_config_yaml = get_current_yaml(file_path)
             d_diff = DeepDiff(previous_config_yaml, current_config_yaml, ignore_order=False)
-            print(d_diff)
+            delta = Delta(d_diff)
+            print(delta.diff['values_changed'])
+
 
 
 def get_current_yaml(file_path):

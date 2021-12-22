@@ -1,2 +1,6 @@
 test: value
 test1: value1
+attributes:
+  pod.tsm.nlp.enabled: false
+  pod.tsm.nlp.with_ds_and_hyper: false
+  pod.tsm.webhooks.enabled: false
